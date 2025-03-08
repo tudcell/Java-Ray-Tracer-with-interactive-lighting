@@ -1,5 +1,6 @@
 # Java-Ray-Tracer-with-interactive-lighting
 Overview
+
 This project is a simple ray tracer implemented in Java using JavaFX for rendering. It simulates how light interacts with spheres in a 3D space, featuring diffuse lighting, ambient lighting, and interactive sphere movement. The ray tracer supports multiple light sources and real-time rendering.
 
 This project was developed as a learning exercise to understand the fundamentals of ray tracing, vector math, and real-time graphics rendering.
