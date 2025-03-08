@@ -11,6 +11,55 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Represents a 3D vector with x, y, and z components.
+ */
+class Vector3 {
+    public final double x, y, z;
+
+    public Vector3(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    public Vector3 subtract(Vector3 v) {
+        if (v == null) {
+            throw new IllegalArgumentException("Vector cannot be null.");
+        }
+        return new Vector3(x - v.x, y - v.y, z - v.z);
+    }
+
+    public Vector3 normalize() {
+        double mag = Math.sqrt(x * x + y * y + z * z);
+        if (mag == 0) {
+            throw new ArithmeticException("Cannot normalize a zero vector.");
+        }
+        return new Vector3(x / mag, y / mag, z / mag);
+    }
+
+    public double dot(Vector3 v) {
+        if (v == null) {
+            throw new IllegalArgumentException("Vector cannot be null.");
+        }
+        return x * v.x + y * v.y + z * v.z;
+    }
+
+    public Vector3 multiply(double scalar) {
+        return new Vector3(x * scalar, y * scalar, z * scalar);
+    }
+
+    public Vector3 add(Vector3 v) {
+        if (v == null) {
+            throw new IllegalArgumentException("Vector cannot be null.");
+        }
+        return new Vector3(x + v.x, y + v.y, z + v.z);
+    }
+}
+
+
+
 /**
  * Represents a ray with an origin and a direction.
  */
@@ -72,51 +121,7 @@ class Sphere {
     }
 }
 
-/**
- * Represents a 3D vector with x, y, and z components.
- */
-class Vector3 {
-    public final double x, y, z;
 
-    public Vector3(double x, double y, double z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-
-    public Vector3 subtract(Vector3 v) {
-        if (v == null) {
-            throw new IllegalArgumentException("Vector cannot be null.");
-        }
-        return new Vector3(x - v.x, y - v.y, z - v.z);
-    }
-
-    public Vector3 normalize() {
-        double mag = Math.sqrt(x * x + y * y + z * z);
-        if (mag == 0) {
-            throw new ArithmeticException("Cannot normalize a zero vector.");
-        }
-        return new Vector3(x / mag, y / mag, z / mag);
-    }
-
-    public double dot(Vector3 v) {
-        if (v == null) {
-            throw new IllegalArgumentException("Vector cannot be null.");
-        }
-        return x * v.x + y * v.y + z * v.z;
-    }
-
-    public Vector3 multiply(double scalar) {
-        return new Vector3(x * scalar, y * scalar, z * scalar);
-    }
-
-    public Vector3 add(Vector3 v) {
-        if (v == null) {
-            throw new IllegalArgumentException("Vector cannot be null.");
-        }
-        return new Vector3(x + v.x, y + v.y, z + v.z);
-    }
-}
 
 /**
  * Main application class for the ray tracing simulation.
